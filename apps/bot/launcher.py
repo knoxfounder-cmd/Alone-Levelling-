@@ -1,17 +1,15 @@
-# bot/launcher.py
+import discord
+from discord.ext import commands
 
-# Bot initialization and startup code
+# Initialize the bot
+intents = discord.Intents.default()
+intents.messages = True
 
-def initialize_bot():
-    print("Initializing bot...")
-    # Add additional initialization logic here
+bot = commands.Bot(command_prefix='!', intents=intents)
 
+@bot.event
+async def on_ready():
+    print(f'Bot is ready. Logged in as {bot.user}')
 
-def start_bot():
-    print("Starting bot...")
-    # Add additional startup logic here
-    initialize_bot()
-    # Main loop for the bot goes here
-
-if __name__ == '__main__':
-    start_bot()
+# Run the bot with your token
+bot.run('YOUR_BOT_TOKEN')
